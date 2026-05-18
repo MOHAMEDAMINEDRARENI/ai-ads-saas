@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="login-body">
+    <div class="login-page">
+        <div class="login-container">
+            <div class="login-card">
+                <div class="login-logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h1 class="logo-text">AI Ads</h1>
+                    <p class="logo-subtitle">نظام الذكاء الاصطناعي للإعلانات</p>
+                </div>
+
+                <div class="login-content">
+                    <h2 class="login-title">تسجيل الدخول</h2>
+                    <p class="login-desc">سجل دخولك باستخدام حساب Google الخاص بك</p>
+
+                    <% if (googleClientId) { %>
+                    <div id="g_id_onload" 
+                         data-client_id="<%= googleClientId %>"
+                         data-context="signin"
+                         data-ux_mode="popup"
+                         data-callback="handleSignInWithGoogle"
+                         data-auto_select="false"
+                         data-itp_support="true"
+                         data-use_fedcm_for_prompt="true">
+                    </div>
+
+                    <div class="g_id_signin" 
+                         data-type="standard"
+                         data-shape="pill"
+                         data-theme="filled_blue"
+                         data-text="signin_with"
+                         data-size="large"
+                         data-logo_alignment="left"
+                         data-width="300">
+                    </div>
+                    <% } %>
+
+                    <div class="login-divider">
+                        <span> </span>
+                    </div>
+
+
+
+                    <div class="login-footer">
+                        <p>بتسجيل الدخول، أنت توافق على <a href="#">شروط الاستخدام</a> و <a href="#">سياسة الخصوصية</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="login-features">
+                <div class="feature-item">
+                    <i class="fas fa-brain"></i>
+                    <span>ذكاء اصطناعي متقدم</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-bullseye"></i>
+                    <span>استهداف دقيق</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-chart-line"></i>
+                    <span>زيادة الأرباح</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function handleSignInWithGoogle(response) {
+            try {
+                const res = await fetch('/auth/google', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ credential: response.credential })
+                });
+
+                const data = await res.json();
+
+                if (data.success) {
+                    window.location.href = data.redirect;
+                } else {
+                    alert('حدث خطأ في تسجيل الدخول');
+                }
+            } catch (err) {
+                console.error('Google sign in error:', err);
+                alert('حدث خطأ في تسجيل الدخول');
+            }
+        }
+
+    </script>
+</body>
+</html>  
