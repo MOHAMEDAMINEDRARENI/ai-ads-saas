@@ -21,7 +21,7 @@ const PLANS = {
         id: 'plus',
         name: 'Plus',
         nameAr: 'بلاس',
-        price: 2000,
+        price: 2500,
         period: 'monthly',
         limit: Infinity,
         features: [
@@ -38,7 +38,7 @@ const PLANS = {
         id: 'pro',
         name: 'Pro',
         nameAr: 'برو',
-        price: 5000,
+        price: 5500,
         period: 'monthly',
         limit: Infinity,
         features: [
@@ -54,7 +54,7 @@ const PLANS = {
         id: 'annual',
         name: 'Annual',
         nameAr: 'سنوي',
-        price: 20000,
+        price: 25000,
         period: 'yearly',
         limit: Infinity,
         features: [
