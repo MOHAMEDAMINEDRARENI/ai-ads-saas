@@ -61,17 +61,13 @@ router.post('/api/payment/create', requireAuth, getUserProfile, async (req, res)
         });
 
         if (!chargilyResponse.ok) {
-            const errorData = await chargilyResponse.text();
-            console.error('Chargily API error:', errorData);
+    const errorData = await chargilyResponse.text();
+    console.error('Chargily API error:', errorData);
 
-            // For demo/development, simulate payment
-            return res.json({
-                success: true,
-                demo: true,
-                paymentId: paymentRecord.id,
-                message: 'وضع العرض التوضيحي - انقر للتأكيد'
-            });
-        }
+    return res.status(500).json({
+        error: 'فشل إنشاء رابط الدفع الحقيقي'
+    });
+}
 
         const chargilyData = await chargilyResponse.json();
 
@@ -202,53 +198,6 @@ router.post('/webhook/chargily', async (req, res) => {
     }
 });
 
-// Demo payment confirmation (for testing without Chargily)
-router.post('/api/payment/demo-confirm', requireAuth, async (req, res) => {
-    try {
-        const { paymentId } = req.body;
-
-        const { data: payment } = await supabase
-            .from('payments')
-            .select('*')
-            .eq('id', paymentId)
-            .eq('user_id', req.user.id)
-            .single();
-
-        if (!payment) {
-            return res.status(404).json({ error: 'Payment not found' });
-        }
-
-        // Update payment
-        await supabaseAdmin
-            .from('payments')
-            .update({ 
-                status: 'completed',
-                paid_at: new Date().toISOString()
-            })
-            .eq('id', paymentId);
-
-        // Update plan
-        const now = new Date();
-        const expiresAt = payment.plan === 'annual' 
-            ? new Date(now.setFullYear(now.getFullYear() + 1))
-            : new Date(now.setMonth(now.getMonth() + 1));
-
-        await supabaseAdmin
-            .from('profiles')
-            .update({
-                plan: payment.plan,
-                plan_started_at: new Date().toISOString(),
-                plan_expires_at: expiresAt.toISOString()
-            })
-            .eq('id', req.user.id);
-
-        res.json({ success: true, plan: payment.plan });
-
-    } catch (err) {
-        console.error('Demo confirm error:', err);
-        res.status(500).json({ error: 'Confirmation failed' });
-    }
-});
 
 // Get payment history
 router.get('/api/payments', requireAuth, async (req, res) => {

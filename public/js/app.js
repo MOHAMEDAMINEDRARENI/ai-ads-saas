@@ -234,27 +234,6 @@ async function handlePaymentSubmit(e) {
             throw new Error(result.error || 'Payment failed');
         }
 
-        if (result.demo) {
-            // Demo mode - simulate payment
-            showToast('وضع العرض التوضيحي - جاري تأكيد الدفع...', 'info');
-
-            setTimeout(async () => {
-                try {
-                    const confirmRes = await fetch('/api/payment/demo-confirm', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ paymentId: result.paymentId })
-                    });
-
-                    if (confirmRes.ok) {
-                        closePaymentModal();
-                        document.getElementById('success-modal').classList.remove('hidden');
-                        showToast('تم تأكيد الاشتراك بنجاح!', 'success');
-                    }
-                } catch (err) {
-                    console.error('Demo confirm error:', err);
-                }
-            }, 2000);
 
         } else if (result.checkoutUrl) {
             // Real Chargily redirect
