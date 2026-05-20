@@ -116,10 +116,6 @@ ${strategy.aiStrategy}
     });
 }
 
-    contentDiv.innerHTML = html;
-    resultDiv.classList.remove('hidden');
-    resultDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
 
 function updateStrategyCount(remaining) {
     const infoEl = document.querySelector('.strategies-used');
@@ -235,10 +231,9 @@ async function handlePaymentSubmit(e) {
         }
 
 
-        } else if (result.checkoutUrl) {
-            // Real Chargily redirect
-            window.location.href = result.checkoutUrl;
-        }
+    if (result.checkoutUrl) {
+    window.location.href = result.checkoutUrl;
+}
 
     } catch (err) {
         console.error('Payment error:', err);
