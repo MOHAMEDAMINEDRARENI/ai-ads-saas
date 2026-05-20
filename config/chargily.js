@@ -10,7 +10,8 @@ const CHARGILY_CONFIG = {
     apiBase:
         process.env.CHARGILY_MODE === 'live'
             ? 'https://pay.chargily.net/api/v2'
-            : 'https://pay.chargily.net/test/api/v2'
+             : 'https://sandbox.chargily.net/api/v2',
+
 };
 
 module.exports = CHARGILY_CONFIG;
