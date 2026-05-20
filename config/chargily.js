@@ -7,8 +7,10 @@ const CHARGILY_CONFIG = {
     mode: process.env.CHARGILY_MODE || 'live',
     currency: 'DZD',
 
-    // Correct API URL
-    apiBase: 'https://api.chargily.com/v2'
+    apiBase:
+        process.env.CHARGILY_MODE === 'live'
+            ? 'https://pay.chargily.net/api/v2'
+            : 'https://pay.chargily.net/test/api/v2'
 };
 
 module.exports = CHARGILY_CONFIG;
