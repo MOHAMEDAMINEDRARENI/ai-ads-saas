@@ -59,35 +59,42 @@ router.post('/api/payment/create', requireAuth, getUserProfile, async (req, res)
                 }
             })
         });
+if (!chargilyResponse.ok) {
 
-        if (!chargilyResponse.ok) {
-    const errorData = await chargilyResponse.text();
-    console.error('Chargily API error:', errorData);
+    const errorText = await chargilyResponse.text();
+
+    console.error('Chargily API error:', errorText);
 
     return res.status(500).json({
-        error: 'فشل إنشاء رابط الدفع الحقيقي'
+        error: 'فشل إنشاء رابط الدفع الحقيقي',
+        details: errorText
     });
 }
 
-        const chargilyData = await chargilyResponse.json();
+const chargilyData = await chargilyResponse.json();
 
-        // Update payment with Chargily checkout ID
-        await supabase
-            .from('payments')
-            .update({ chargily_checkout_id: chargilyData.id })
-            .eq('id', paymentRecord.id);
+// Update payment with Chargily checkout ID
+await supabase
+    .from('payments')
+    .update({ chargily_checkout_id: chargilyData.id })
+    .eq('id', paymentRecord.id);
 
-        res.json({
-            success: true,
-            checkoutUrl: chargilyData.checkout_url,
-            paymentId: paymentRecord.id
-        });
-
-    } catch (err) {
-        console.error('Payment creation error:', err);
-        res.status(500).json({ error: 'حدث خطأ في إنشاء عملية الدفع' });
-    }
+res.json({
+    success: true,
+    checkoutUrl: chargilyData.checkout_url,
+    paymentId: paymentRecord.id
 });
+
+} catch (err) {
+
+    console.error('Payment creation error:', err);
+
+    return res.status(500).json({
+        error: 'حدث خطأ في إنشاء عملية الدفع',
+        details: err.message
+    });
+}
+ });
 
 // Payment success callback
 router.get('/payment/success', async (req, res) => {
