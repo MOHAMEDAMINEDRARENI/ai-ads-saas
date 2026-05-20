@@ -51,7 +51,7 @@ router.post('/api/payment/create', requireAuth, getUserProfile, async (req, res)
                 success_url: successUrl,
                 failure_url: failureUrl,
                 description: `اشتراك ${plan.nameAr} - AI Ads`,
-                customer_email: email,
+                
                 metadata: {
                     user_id: req.user.id,
                     plan: planId,
