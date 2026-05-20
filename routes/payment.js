@@ -18,7 +18,7 @@ router.post('/api/payment/create', requireAuth, getUserProfile, async (req, res)
         }
 
         // Create payment record
-        const { data: paymentRecord, error: dbError } = await supabase
+        const { data: paymentRecord, error: dbError } = await supabaseAdmin
             .from('payments')
             .insert({
                 user_id: req.user.id,
