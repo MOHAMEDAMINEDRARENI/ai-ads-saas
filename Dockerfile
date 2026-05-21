@@ -1,4 +1,4 @@
-# AI Ads - Dockerfile
+# AI Ads Marketing - Dockerfile
 FROM node:18-alpine
 
 # Set working directory

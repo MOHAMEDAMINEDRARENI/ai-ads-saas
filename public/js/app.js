@@ -1,4 +1,4 @@
-// AI Ads - Client Application
+// AI Ads Marketing - Client Application
 
 // ===== APP STATE =====
 let selectedPlan = null;
@@ -71,7 +71,7 @@ async function handleStrategySubmit(e) {
 
         currentStrategy = result.strategy;
         displayStrategyResult(result.strategy);
-        showToast('تم إنشاء الاستراتيجية بنجاح!', 'success');
+        showToast('تم إنشاء الحملة التسويقية بنجاح!', 'success');
 
         // Update strategy count display
         updateStrategyCount(result.remaining);
@@ -81,7 +81,7 @@ async function handleStrategySubmit(e) {
         showToast(err.message || 'حدث خطأ في إنشاء الاستراتيجية', 'error');
     } finally {
         btn.disabled = false;
-        btn.innerHTML = '<i class="fas fa-wand-magic-sparkles"></i><span>إنشاء الاستراتيجية الإعلانية</span><div class="btn-shine"></div>';
+        btn.innerHTML = '<i class="fas fa-wand-magic-sparkles"></i><span>إنشاء حملة تسويق كاملة بالذكاء الاصطناعي</span><div class="btn-shine"></div>';
     }
 }
 
@@ -128,7 +128,7 @@ function updateStrategyCount(remaining) {
 function copyStrategy() {
     const content = document.getElementById('strategy-content').innerText;
     navigator.clipboard.writeText(content).then(() => {
-        showToast('تم نسخ الاستراتيجية!', 'success');
+        showToast('تم نسخ الحملة كاملة!', 'success');
     });
 }
 

@@ -10,7 +10,7 @@ router.get('/dashboard', requireAuth, getUserProfile, async (req, res) => {
     const profile = req.profile;
 
     res.render('dashboard', {
-        title: 'لوحة التحكم - AI Ads',
+        title: 'لوحة التحكم -  AI Ads Marketing',
         user: {
             id: user.id,
             email: user.email,

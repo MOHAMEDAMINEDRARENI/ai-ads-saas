@@ -50,7 +50,7 @@ router.post('/api/payment/create', requireAuth, getUserProfile, async (req, res)
                 currency: CHARGILY_CONFIG.currency,
                 success_url: successUrl,
                 failure_url: failureUrl,
-                description: `اشتراك ${plan.nameAr} - AI Ads`,
+                description: `اشتراك ${plan.nameAr} - AI Ads Marketing`,
                 
                 metadata: {
                     user_id: req.user.id,

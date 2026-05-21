@@ -1,7 +1,7 @@
 {
   "name": "ai-ads-saas",
   "version": "1.0.0",
-  "description": "AI Ads - نظام الذكاء الاصطناعي للإعلانات على Instagram و Facebook",
+  "description": "AI Ads Marketing - منصة ذكاء اصطناعي لإنشاء حملات تسويقية احترافية على Instagram و Facebook",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

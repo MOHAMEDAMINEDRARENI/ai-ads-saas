@@ -1,4 +1,4 @@
-# دليل النشر - AI Ads (Node.js)
+# دليل النشر - AI Ads Marketing (Node.js)
 
 ## 🚀 خطوات النشر السريع
 

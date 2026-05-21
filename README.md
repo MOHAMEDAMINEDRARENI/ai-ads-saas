@@ -1,7 +1,7 @@
-# AI Ads - نظام الذكاء الاصطناعي للإعلانات (Node.js Edition)
+# AI Ads Marketing - منصة ذكاء اصطناعي لإنشاء حملات تسويقية احترافية (Node.js Edition)
 
 ## 🎯 نظرة عامة
-نظام AI Ads المبني بـ Node.js/Express.js - منصة ذكاء اصطناعي متكاملة لإنشاء استراتيجيات إعلانية ناجحة على Instagram و Facebook، مخصصة حصرياً للسوق الجزائري.
+نظام AI Ads Marketing المبني بـ Node.js/Express.js - منصة ذكاء اصطناعي متكاملة لإنشاء استراتيجيات إعلانية ناجحة على Instagram و Facebook، مخصصة حصرياً للسوق الجزائري.
 
 ## 📁 هيكل المشروع
 
@@ -92,7 +92,7 @@ CHARGILY_SECRET_KEY=sk_test_xxxxxxxxxxxxxxxx
 CHARGILY_MODE=test
 
 # App
-APP_NAME=AI Ads
+APP_NAME=AI Ads Marketing
 INSTAGRAM_HANDLE=@your_instagram
 SESSION_SECRET=your-super-secret-key
 ```
@@ -364,7 +364,7 @@ pm2 startup
 ## 📝 حقوق النشر
 
 ```
-Copyright © 2026 AI Ads | Coded by @your_instagram
+Copyright © 2026 AI Ads Marketing | Coded by @your_instagram
 ```
 
 ---

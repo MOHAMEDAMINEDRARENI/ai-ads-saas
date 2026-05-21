@@ -7,7 +7,7 @@ const { requireGuest } = require('../middleware/auth');
 // Login page
 router.get('/login', requireGuest, (req, res) => {
     res.render('login', {
-        title: 'تسجيل الدخول - AI Ads',
+        title: 'تسجيل الدخول - AI Ads Marketing',
         googleClientId: process.env.GOOGLE_CLIENT_ID,
         appUrl: process.env.APP_URL
     });

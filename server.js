@@ -1,4 +1,4 @@
-// AI Ads - Node.js Server
+// AI Ads Marketing - Node.js Server
 const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
@@ -35,7 +35,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 // Make env vars available to views
-app.locals.appName = process.env.APP_NAME || 'AI Ads';
+app.locals.appName = process.env.APP_NAME || 'AI Ads Marketing';
 app.locals.instagramHandle = process.env.INSTAGRAM_HANDLE || '@your_instagram';
 app.locals.googleClientId = process.env.GOOGLE_CLIENT_ID || '';
 app.locals.appUrl = process.env.APP_URL || `http://localhost:${PORT}`;
@@ -76,7 +76,7 @@ app.use((err, req, res, next) => {
 
 // Start server
 app.listen(PORT, () => {
-    console.log(`\n🚀 AI Ads Server running on http://localhost:${PORT}`);
+    console.log(`\n🚀 AI Ads Marketing Server running on http://localhost:${PORT}`);
     console.log(`📱 Environment: ${process.env.NODE_ENV || 'development'}`);
     console.log(`🔗 App URL: ${process.env.APP_URL || `http://localhost:${PORT}`}`);
     console.log(`\n📋 Available routes:`);
