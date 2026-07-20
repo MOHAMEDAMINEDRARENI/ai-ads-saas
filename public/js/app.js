@@ -305,3 +305,39 @@ function showToast(message, type = 'info') {
         toast.classList.add('hidden');
     }, 4000);
 }
+// ================================
+// Age Range Slider
+// ================================
+
+const ageSlider = document.getElementById('age-slider');
+
+if (ageSlider) {
+
+    noUiSlider.create(ageSlider, {
+
+        start: [18, 65],
+
+        connect: true,
+
+        step: 1,
+
+        range: {
+            min: 18,
+            max: 65
+        }
+
+    });
+
+    ageSlider.noUiSlider.on('update', function (values) {
+
+        const minAge = Math.round(values[0]);
+        const maxAge = Math.round(values[1]);
+
+        document.getElementById('age-min').textContent = minAge + " سنة";
+        document.getElementById('age-max').textContent = maxAge + " سنة";
+
+        document.getElementById('age-group').value = minAge + "-" + maxAge;
+
+    });
+
+}

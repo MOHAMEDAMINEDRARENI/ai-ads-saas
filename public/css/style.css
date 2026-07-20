@@ -614,3 +614,50 @@ input, select, textarea { font-family: inherit; outline: none; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--gray-lighter); border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--gray-light); }
+/* ===========================
+   Age Range Slider
+=========================== */
+
+#age-slider{
+    margin-top:15px;
+    margin-bottom:15px;
+}
+
+.age-values{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:12px;
+    font-weight:700;
+    font-size:16px;
+    color:#6C63FF;
+}
+
+.noUi-target{
+    border:none;
+    box-shadow:none;
+    height:8px;
+    border-radius:10px;
+    background:#e5e7eb;
+}
+
+.noUi-connect{
+    background:#6C63FF;
+}
+
+.noUi-handle{
+    width:22px !important;
+    height:22px !important;
+    border-radius:50%;
+    border:3px solid #6C63FF;
+    background:#ffffff;
+    box-shadow:0 2px 8px rgba(0,0,0,.15);
+    cursor:pointer;
+    right:-11px !important;
+    top:-8px !important;
+}
+
+.noUi-handle::before,
+.noUi-handle::after{
+    display:none;
+}
