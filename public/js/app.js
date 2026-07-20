@@ -317,7 +317,7 @@ if (ageSlider) {
 
         start: [18, 65],
 
-        connect: true,
+        connect: [false, true, false],
 
         step: 1,
 
