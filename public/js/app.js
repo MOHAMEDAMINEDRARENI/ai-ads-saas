@@ -305,39 +305,45 @@ function showToast(message, type = 'info') {
         toast.classList.add('hidden');
     }, 4000);
 }
-// ================================
-// Age Range Slider
-// ================================
+// ==========================================
+// Age Range Inputs
+// ==========================================
 
-const ageSlider = document.getElementById('age-slider');
+const ageFrom = document.getElementById("age-from");
+const ageTo = document.getElementById("age-to");
+const ageGroup = document.getElementById("age-group");
 
-if (ageSlider) {
+if (ageFrom && ageTo && ageGroup) {
 
-    noUiSlider.create(ageSlider, {
+    function updateAgeRange() {
 
-        start: [18, 65],
+        let from = parseInt(ageFrom.value) || 18;
+        let to = parseInt(ageTo.value) || 65;
 
-        connect: [false, true, false],
+        // الحد الأدنى
+        if (from < 18) from = 18;
 
-        step: 1,
+        // الحد الأقصى
+        if (from > 65) from = 65;
 
-        range: {
-            min: 18,
-            max: 65
+        if (to < 18) to = 18;
+
+        if (to > 65) to = 65;
+
+        // لا تسمح أن يكون الأدنى أكبر من الأعلى
+        if (from > to) {
+            from = to;
         }
 
-    });
+        ageFrom.value = from;
+        ageTo.value = to;
 
-    ageSlider.noUiSlider.on('update', function (values) {
+        // القيمة التي سترسل إلى الذكاء الاصطناعي
+        ageGroup.value = `${from}-${to}`;
+    }
 
-        const minAge = Math.round(values[0]);
-        const maxAge = Math.round(values[1]);
+    ageFrom.addEventListener("input", updateAgeRange);
+    ageTo.addEventListener("input", updateAgeRange);
 
-        document.getElementById('age-min').textContent = minAge + " سنة";
-        document.getElementById('age-max').textContent = maxAge + " سنة";
-
-        document.getElementById('age-group').value = minAge + "-" + maxAge;
-
-    });
-
+    updateAgeRange();
 }

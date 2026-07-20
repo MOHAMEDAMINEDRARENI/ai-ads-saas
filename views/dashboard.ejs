@@ -151,21 +151,44 @@
                         <input type="text" id="target-audience" name="target_audience" required 
                                placeholder="مثال: الشباب المهتمين بالتقنية">
                     </div>
-
-                    <div class="form-group">
+<div class="form-group">
 
     <label>
         <i class="fas fa-user-clock"></i>
         الفئة العمرية المستهدفة
     </label>
 
-    <div id="age-slider"></div>
+    <div class="age-range-container">
 
-    <div class="age-values">
+        <div class="age-input">
 
-        <span id="age-min">18 سنة</span>
+            <label for="age-from">من العمر</label>
 
-        <span id="age-max">65 سنة</span>
+            <input
+                type="number"
+                id="age-from"
+                min="18"
+                max="65"
+                value="18"
+                required
+            >
+
+        </div>
+
+        <div class="age-input">
+
+            <label for="age-to">إلى العمر</label>
+
+            <input
+                type="number"
+                id="age-to"
+                min="18"
+                max="65"
+                value="65"
+                required
+            >
+
+        </div>
 
     </div>
 
@@ -177,7 +200,6 @@
     >
 
 </div>
-
                     <div class="form-group">
                         <label for="target-country">
                             <i class="fas fa-globe"></i>
