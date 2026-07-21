@@ -660,3 +660,9 @@ input, select, textarea { font-family: inherit; outline: none; }
     box-shadow:0 0 10px rgba(108,99,255,.2);
 
 }
+.age-error{
+    margin-top:10px;
+    color:#dc2626;
+    font-size:14px;
+    font-weight:600;
+}

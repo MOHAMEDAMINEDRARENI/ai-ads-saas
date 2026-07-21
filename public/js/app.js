@@ -306,44 +306,64 @@ function showToast(message, type = 'info') {
     }, 4000);
 }
 // ==========================================
-// Age Range Inputs
+// Age Range Validation
 // ==========================================
 
 const ageFrom = document.getElementById("age-from");
 const ageTo = document.getElementById("age-to");
 const ageGroup = document.getElementById("age-group");
+const ageError = document.getElementById("age-error");
 
-if (ageFrom && ageTo && ageGroup) {
+if (ageFrom && ageTo && ageGroup && ageError) {
 
-    function updateAgeRange() {
+    function validateAgeRange() {
 
-        let from = parseInt(ageFrom.value) || 18;
-        let to = parseInt(ageTo.value) || 65;
+        const from = parseInt(ageFrom.value);
+        const to = parseInt(ageTo.value);
 
-        // الحد الأدنى
-        if (from < 18) from = 18;
+        ageError.textContent = "";
 
-        // الحد الأقصى
-        if (from > 65) from = 65;
-
-        if (to < 18) to = 18;
-
-        if (to > 65) to = 65;
-
-        // لا تسمح أن يكون الأدنى أكبر من الأعلى
-        if (from > to) {
-            from = to;
+        if (isNaN(from) || isNaN(to)) {
+            ageGroup.value = "";
+            return false;
         }
 
-        ageFrom.value = from;
-        ageTo.value = to;
+        if (from < 18 || from > 65) {
 
-        // القيمة التي سترسل إلى الذكاء الاصطناعي
+            ageError.textContent =
+            "العمر الأدنى يجب أن يكون بين 18 و 65 سنة.";
+
+            ageGroup.value = "";
+            return false;
+        }
+
+        if (to < 18 || to > 65) {
+
+            ageError.textContent =
+            "العمر الأقصى يجب أن يكون بين 18 و 65 سنة.";
+
+            ageGroup.value = "";
+            return false;
+        }
+
+        if (from > to) {
+
+            ageError.textContent =
+            "العمر الأدنى يجب أن يكون أقل من أو يساوي العمر الأقصى.";
+
+            ageGroup.value = "";
+            return false;
+        }
+
         ageGroup.value = `${from}-${to}`;
+
+        return true;
+
     }
 
-    ageFrom.addEventListener("input", updateAgeRange);
-    ageTo.addEventListener("input", updateAgeRange);
+    ageFrom.addEventListener("change", validateAgeRange);
+ageTo.addEventListener("change", validateAgeRange);
 
-    updateAgeRange();
+    validateAgeRange();
+
 }
