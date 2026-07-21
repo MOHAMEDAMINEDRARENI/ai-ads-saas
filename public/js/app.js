@@ -24,14 +24,43 @@ function setupEventListeners() {
         paymentForm.addEventListener('submit', handlePaymentSubmit);
     }
 
-    // Close dropdown when clicking outside
-    document.addEventListener('click', (e) => {
-        const userMenu = document.querySelector('.user-menu');
-        const dropdown = document.getElementById('user-dropdown');
-        if (userMenu && dropdown && !userMenu.contains(e.target)) {
-            dropdown.classList.add('hidden');
-        }
+    // Close dropdowns when clicking outside
+document.addEventListener('click', (e) => {
+
+    // User Menu
+    const userMenu = document.querySelector('.user-menu');
+    const userDropdown = document.getElementById('user-dropdown');
+
+    if (userMenu && userDropdown && !userMenu.contains(e.target)) {
+        userDropdown.classList.add('hidden');
+    }
+
+    // Language Menu
+    const languageMenu = document.querySelector('.language-menu');
+    const languageDropdown = document.getElementById('languageDropdown');
+
+    if (languageMenu && languageDropdown && !languageMenu.contains(e.target)) {
+        languageDropdown.classList.add('hidden');
+    }
+
+});
+
+// Language Button
+const languageBtn = document.getElementById('languageBtn');
+
+if (languageBtn) {
+
+    languageBtn.addEventListener('click', function (e) {
+
+        e.stopPropagation();
+
+        document
+            .getElementById('languageDropdown')
+            .classList.toggle('hidden');
+
     });
+
+}
 }
 
 // ===== USER MENU =====
