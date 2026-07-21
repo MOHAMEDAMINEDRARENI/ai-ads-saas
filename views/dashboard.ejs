@@ -60,9 +60,9 @@
     </div>
 
     <button class="btn-subscribe-header" onclick="scrollToPricing()">
-        <i class="fas fa-crown"></i>
-        <span>اشترك الآن</span>
-    </button>
+    <i class="fas fa-crown"></i>
+    <span data-i18n="subscribe_now">اشترك الآن</span>
+</button>
 
             <div class="user-menu">
                 <div class="user-info" onclick="toggleUserMenu()">
@@ -508,6 +508,16 @@
     const plansConfig = <%- JSON.stringify(plans) %>;
 </script>
     <script src="https://cdn.jsdelivr.net/npm/nouislider@15.8.1/dist/nouislider.min.js"></script>
+    <script src="https://unpkg.com/i18next@23.11.5/dist/umd/i18next.min.js"></script>
+
+<script src="https://unpkg.com/i18next-http-backend@2.5.2/i18nextHttpBackend.min.js"></script>
+
+<script src="https://unpkg.com/i18next-browser-languagedetector@7.2.0/i18nextBrowserLanguageDetector.min.js"></script>
+<script src="https://unpkg.com/i18next@23.11.5/dist/umd/i18next.min.js"></script>
+
+<script src="https://unpkg.com/i18next-http-backend@2.5.2/i18nextHttpBackend.min.js"></script>
+
+<script src="https://unpkg.com/i18next-browser-languagedetector@7.2.0/i18nextBrowserLanguageDetector.min.js"></script>
     <script src="/js/app.js"></script>
 </body>
 </html>

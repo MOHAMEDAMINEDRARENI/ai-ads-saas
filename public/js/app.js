@@ -1,3 +1,30 @@
+// ==========================
+// i18next Initialization
+// ==========================
+
+i18next
+    .use(i18nextHttpBackend)
+    .use(i18nextBrowserLanguageDetector)
+    .init({
+
+        fallbackLng: "ar",
+
+        supportedLngs: ["ar", "fr", "en"],
+
+        debug: false,
+
+        backend: {
+            loadPath: "/locales/{{lng}}/translation.json"
+        },
+
+        detection: {
+            order: ["localStorage", "navigator"],
+            caches: ["localStorage"]
+        }
+
+    });
+
+
 // AI Ads Marketing - Client Application
 
 // ===== APP STATE =====
@@ -396,3 +423,90 @@ ageTo.addEventListener("change", validateAgeRange);
     validateAgeRange();
 
 }
+// ==========================
+// Language Switcher
+// ==========================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const languageBtn = document.getElementById("languageBtn");
+    const languageDropdown = document.getElementById("languageDropdown");
+
+    if (languageBtn && languageDropdown) {
+
+        languageBtn.addEventListener("click", (e) => {
+
+            e.stopPropagation();
+
+            languageDropdown.classList.toggle("hidden");
+
+        });
+
+        document.addEventListener("click", () => {
+
+            languageDropdown.classList.add("hidden");
+
+        });
+
+    }
+
+    document.querySelectorAll(".language-item").forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            const lang = button.dataset.lang;
+
+            i18next.changeLanguage(lang);
+
+
+        });
+
+    });
+
+});
+
+// ==========================
+// Translate Page
+// ==========================
+
+function updateContent() {
+
+    document.querySelectorAll("[data-i18n]").forEach(element => {
+
+        const key = element.getAttribute("data-i18n");
+
+        element.textContent = i18next.t(key);
+
+    });
+
+    // تغيير اتجاه الصفحة
+
+    if (i18next.language === "ar") {
+
+        document.documentElement.lang = "ar";
+        document.documentElement.dir = "rtl";
+
+    } else {
+
+        document.documentElement.lang = i18next.language;
+        document.documentElement.dir = "ltr";
+
+    }
+
+}
+
+// عند انتهاء تحميل i18next
+
+i18next.on("initialized", () => {
+
+    updateContent();
+
+});
+
+// عند تغيير اللغة
+
+i18next.on("languageChanged", () => {
+
+    updateContent();
+
+});
