@@ -79,6 +79,8 @@ if (languageBtn) {
 
     languageBtn.addEventListener('click', function (e) {
 
+        alert("تم الضغط على الزر");
+
         e.stopPropagation();
 
         document
