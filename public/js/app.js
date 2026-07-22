@@ -435,6 +435,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (languageBtn && languageDropdown) {
 
         languageBtn.addEventListener("click", (e) => {
+            console.log("Language button clicked");
 
             e.stopPropagation();
 
