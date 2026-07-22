@@ -670,10 +670,12 @@ input, select, textarea { font-family: inherit; outline: none; }
    Language Menu
 =========================== */
 
-.language-menu{
-    position:relative;
-    display:flex;
-    align-items:center;
+.language-menu {
+
+    position: relative;
+
+    z-index: 99999;
+
 }
 
 .language-btn{
@@ -704,27 +706,29 @@ input, select, textarea { font-family: inherit; outline: none; }
 
 }
 
-.language-dropdown{
+.language-dropdown {
 
     position: absolute;
 
-    top: 55px;
+    top: calc(100% + 0.5rem);
 
     right: 0;
 
-    width: 190px;
-
-    background: white;
-
-    border-radius: 14px;
-
-    box-shadow: 0 15px 40px rgba(0,0,0,.15);
+    background: #fff;
 
     border: 1px solid #e5e7eb;
 
+    border-radius: 12px;
+
+    min-width: 180px;
+
     overflow: hidden;
 
-    z-index: 999999;
+    box-shadow: 0 15px 40px rgba(0,0,0,.15);
+
+    z-index: 99999;
+
+    animation: dropdownIn 0.2s ease-out;
 
 }
 

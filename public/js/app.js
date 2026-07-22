@@ -79,7 +79,6 @@ if (languageBtn) {
 
     languageBtn.addEventListener('click', function (e) {
 
-        alert("تم الضغط على الزر");
 
         e.stopPropagation();
 
@@ -87,7 +86,6 @@ if (languageBtn) {
 
 dropdown.classList.remove('hidden');
 
-alert(dropdown.className);
 
     });
 
