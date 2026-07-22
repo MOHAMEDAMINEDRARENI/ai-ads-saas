@@ -425,44 +425,53 @@ ageTo.addEventListener("change", validateAgeRange);
     validateAgeRange();
 
 }
-// ==========================
-// Language Switcher
-// ==========================
-
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
 
     const languageBtn = document.getElementById("languageBtn");
     const languageDropdown = document.getElementById("languageDropdown");
 
-    if (languageBtn && languageDropdown) {
+    if (!languageBtn || !languageDropdown) return;
 
-        languageBtn.addEventListener("click", (e) => {
-            console.log("Language button clicked");
+    // فتح وإغلاق القائمة
+    languageBtn.onclick = function (e) {
 
-            e.stopPropagation();
+        e.preventDefault();
+        e.stopPropagation();
 
-            languageDropdown.classList.toggle("hidden");
+        if (languageDropdown.classList.contains("hidden")) {
+            languageDropdown.classList.remove("hidden");
+        } else {
+            languageDropdown.classList.add("hidden");
+        }
 
-        });
+    };
 
+    // تغيير اللغة
+    document.querySelectorAll(".language-item").forEach(item => {
 
-    }
+        item.onclick = function () {
 
-    document.querySelectorAll(".language-item").forEach(button => {
+            i18next.changeLanguage(this.dataset.lang);
 
-        button.addEventListener("click", () => {
+            languageDropdown.classList.add("hidden");
 
-            const lang = button.dataset.lang;
+        };
 
-            i18next.changeLanguage(lang);
+    });
 
+    // إغلاق عند الضغط خارج القائمة
+    document.addEventListener("click", function (e) {
 
-        });
+        if (!languageDropdown.contains(e.target) &&
+            !languageBtn.contains(e.target)) {
+
+            languageDropdown.classList.add("hidden");
+
+        }
 
     });
 
 });
-
 // ==========================
 // Translate Page
 // ==========================
