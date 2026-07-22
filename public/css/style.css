@@ -706,23 +706,25 @@ input, select, textarea { font-family: inherit; outline: none; }
 
 .language-dropdown{
 
-    position:absolute;
+    position: absolute;
 
-    top:55px;
+    top: 55px;
 
-    right:0;
+    right: 0;
 
-    width:190px;
+    width: 190px;
 
-    background:white;
+    background: white;
 
-    border-radius:14px;
+    border-radius: 14px;
 
-    box-shadow:0 15px 40px rgba(0,0,0,.12);
+    box-shadow: 0 15px 40px rgba(0,0,0,.15);
 
-    overflow:hidden;
+    border: 1px solid #e5e7eb;
 
-    z-index:9999;
+    overflow: hidden;
+
+    z-index: 999999;
 
 }
 

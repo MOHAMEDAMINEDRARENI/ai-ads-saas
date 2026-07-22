@@ -83,9 +83,11 @@ if (languageBtn) {
 
         e.stopPropagation();
 
-        document
-            .getElementById('languageDropdown')
-            .classList.toggle('hidden');
+    const dropdown = document.getElementById('languageDropdown');
+
+dropdown.classList.remove('hidden');
+
+alert(dropdown.className);
 
     });
 
