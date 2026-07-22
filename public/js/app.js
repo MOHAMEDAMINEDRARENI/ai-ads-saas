@@ -445,11 +445,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
         });
 
-        document.addEventListener("click", () => {
+        document.addEventListener("click", (e) => {
 
-            languageDropdown.classList.add("hidden");
+    if (!languageBtn.contains(e.target) &&
+        !languageDropdown.contains(e.target)) {
 
-        });
+        languageDropdown.classList.add("hidden");
+
+    }
+
+});
 
     }
 
