@@ -445,16 +445,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         });
 
-        document.addEventListener("click", (e) => {
-
-    if (!languageBtn.contains(e.target) &&
-        !languageDropdown.contains(e.target)) {
-
-        languageDropdown.classList.add("hidden");
-
-    }
-
-});
 
     }
 
